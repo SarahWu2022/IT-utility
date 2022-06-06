@@ -12,7 +12,7 @@ public class Main {
     private void start() {
         int input, decimal;
         while (true) {
-            System.out.println("1. Decimal to binary\n2. IP to binary\n3. Modulo tool\n4. Log2n calculator\n5. SNR to S/N\n6. Exit\nChoose a tool.");
+            System.out.println("1. Decimal to binary\n2. Binary to decimal\n3. IP to binary\n4. Modulo tool\n5. Log2n calculator\n6. 2^n calculator\n7. SNR to S/N\n8. Exit\nChoose a tool.");
             input = scanner.nextInt();
             switch (input) {
                 case (1):
@@ -21,11 +21,16 @@ public class Main {
                     toBinary(decimal);
                     break;
                 case (2):
+                    System.out.println("What is the binary number?");
+                    String binary = scanner.next();
+                    toDecimal(binary);
+                    break;
+                case (3):
                     System.out.println("What is the IP address?");
                     String ip = scanner.next();
                     toIP(ip);
                     break;
-                case (3):
+                case (4):
                     System.out.println("What is d and z? (separate with space)");
                     try {
                         int d = scanner.nextInt();
@@ -36,7 +41,7 @@ public class Main {
                         System.out.println("Invalid input");
                         break;
                     }
-                case (4):
+                case (5):
                     System.out.println("What is n?");
                     try {
                         int n = scanner.nextInt();
@@ -46,14 +51,25 @@ public class Main {
                         System.out.println("Invalid input");
                         break;
                     }
-                case (5):
+                case (6):
+                    System.out.println("What is n?");
+                    try {
+                        int n = scanner.nextInt();
+                        twoPowerN(n);
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        break;
+                    }
+                case (7):
                     System.out.println("What is SRN?");
                     int snr = scanner.nextInt();
                     SNRtoSN(snr);
                     break;
-                case (6):
+                case (8):
                     scanner.close();
                     System.exit(0);
+                    break;
             }
         }
     }
@@ -62,6 +78,12 @@ public class Main {
         String binary;
         binary = Integer.toBinaryString(decimal);
         System.out.println("The binary number is: " + binary + "\n");
+    }
+
+    private void toDecimal(String binary) {
+        int decimal;
+        decimal = Integer.parseInt(binary, 2);
+        System.out.println("The decimal number is: " + decimal + "\n");
     }
 
     private void toIP(String ip) {
@@ -96,6 +118,11 @@ public class Main {
     private void log2n(int n) {
         double log2n = (Math.log(n) / Math.log(2));
         System.out.println("The log2n is: " + log2n + "\n");
+    }
+
+    private void twoPowerN(int n) {
+        double twoPowerN = Math.pow(2, n);
+        System.out.println("The 2^n is: " + twoPowerN + "\n");
     }
 
     private void SNRtoSN(int snr) {
