@@ -107,12 +107,11 @@ public class Main {
 
     private void moduloTool(int d, int z) {
         int[] e = {3, 5, 7, 11, 13};
-        for (int i = 0; i < e.length; i++) {
-            if (e[i] * d % z == 1) {
-                System.out.println("The modulo is: " + e[i] + "\n");
+        for (int j : e)
+            if (j * d % z == 1) {
+                System.out.println("The modulo is: " + j + "\n");
                 break;
             }
-        }
     }
 
     private void log2n(int n) {
